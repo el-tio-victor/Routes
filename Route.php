@@ -3,9 +3,8 @@
         private $base_path ;
         private $uri;
         private $base_url;
-        public function __construct(){
-            
-        }
+        
+    
         public function clean_route(){
             $this->base_path = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1));
             $this->uri = substr($_SERVER['REQUEST_URI'], strlen($this->base_path));
@@ -14,7 +13,9 @@
             return  $this->uri;
             
         }
-        public function getRoute(){
-            
+        public function get_route(){
+            $this->base_url=$this->clean_route();
+            $routes = explode('/', $this->base_url);
+            return $routes;
         }
     }
